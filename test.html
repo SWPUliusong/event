@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script src="./event.js"></script>
+	<script>
+		var e = new Event()
+
+		var listener1 = function(data) {
+		  console.log(data)
+		}
+
+		var listener2 = function(data) {
+		  console.log(data + 123)
+		}
+
+		e.on('a', listener1)
+		e.on('a', listener2)
+
+		e.emit('a', 123)
+		e.off('a', listener1)
+		e.emit('a', 123)
+		
+		e.once('bbb', function(data) {
+			console.log(data)
+		})
+		e.once('ccc', function(data) {
+			console.log(data)
+		})
+
+		e.emit('bbb', 789)
+		e.emit('bbb', 789)
+		e.emit('bbb', 789)
+		e.emit('ccc', 741)
+		e.emit('ccc', 741)
+		e.emit('ccc', 741)
+	</script>
+</body>
+</html>
